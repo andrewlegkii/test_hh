@@ -2,10 +2,11 @@ import websocket
 import json
 import time
 import telegram
-
+from telegram import Update
 from telegram.ext import (Updater,
                           CommandHandler,
-                          CallbackQueryHandler)
+                          CallbackQueryHandler,
+                          CallbackContext)
 
 bot_token = '6155355153:AAFdVi1QCj_3g4Z3Rll-0W74cZwBwnC5KH8'
 chat_id = '360300829'
@@ -31,14 +32,14 @@ def on_message(ws, message):
 def on_close(ws):
     print("Ошибка подключения.")
 
-def start(update, context):
+def start(update: Update, context: CallbackContext):
     bot = context.bot
     text = "Нажмите на кнопку для получения цены ETHUSDT."
     button = telegram.InlineKeyboardButton(text="Get ETHUSDT Price", callback_data="get_price")
     keyboard = telegram.InlineKeyboardMarkup([[button]])
     bot.send_message(chat_id=chat_id, text=text, reply_markup=keyboard)
 
-def button(update, context):
+def button(update: Update, context: CallbackContext):
     query = update.callback_query
     if query.data == "get_price":
         if last_price is not None:
@@ -47,7 +48,7 @@ def button(update, context):
             text = "Попробуйте позже."
         query.answer(text=text)
 
-updater = Updater(bot_token, use_context=True)
+updater = Updater(bot_token)
 
 updater.dispatcher.add_handler(CommandHandler('start', start))
 updater.dispatcher.add_handler(CallbackQueryHandler(button))
