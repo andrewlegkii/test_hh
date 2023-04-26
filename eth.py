@@ -3,6 +3,7 @@ import json
 import time
 import telegram
 
+from collections.abc import Mapping
 from telegram.ext import (Updater,
                           CommandHandler,
                           CallbackQueryHandler,
