@@ -47,7 +47,7 @@ def button(update, context):
             text = "Попробуйте позже."
         query.answer(text=text)
 
-updater = Updater(bot_token)
+updater = Updater(bot_token, use_context=True)
 
 updater.dispatcher.add_handler(CommandHandler('start', start))
 updater.dispatcher.add_handler(CallbackQueryHandler(button))
