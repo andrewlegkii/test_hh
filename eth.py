@@ -3,12 +3,9 @@ import json
 import time
 import telegram
 
-from collections.abc import Mapping
 from telegram.ext import (Updater,
                           CommandHandler,
-                          CallbackQueryHandler,
-                          CallbackContext)
-import logging
+                          CallbackQueryHandler)
 
 bot_token = '6155355153:AAFdVi1QCj_3g4Z3Rll-0W74cZwBwnC5KH8'
 chat_id = '360300829'
@@ -50,7 +47,7 @@ def button(update, context):
             text = "Попробуйте позже."
         query.answer(text=text)
 
-updater = Updater(bot_token, use_context=True)
+updater = Updater(bot_token)
 
 updater.dispatcher.add_handler(CommandHandler('start', start))
 updater.dispatcher.add_handler(CallbackQueryHandler(button))
