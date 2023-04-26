@@ -4,9 +4,11 @@
 
 # Запуск бота
 
-@test_work_int_bot - проверка работоспособности.
-Можно создать и своего бота и импортировать этот код.
-Для этого измените поля: bot_token и chat_id в eth.py
-Установить все библиотеки: pip install -r requirements.txt
-Запуск бота с помощью: python eth.py
+1. Клонируйте себе репозиторий: git clone https://github.com/andrewlegkii/test_hh.git
+2. Создайте и активируйте виртуальное окружение: python -m venv venv / source venv/Scripts/activate
+3. Измените поля: bot_token и chat_id в eth.py
+4. Установить все библиотеки: pip install -r requirements.txt
+5. Запуск бота с помощью: python eth.py
+6. @test_work_int_bot - проверка работоспособности.
+
 
